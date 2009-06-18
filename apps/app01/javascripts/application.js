@@ -1,4 +1,5 @@
-// sandbox ourselves
+// sandbox ourselves to guarantee we don't interfere with OnDemand platform
+// JS internals
 (function() {
     
 // bail if we don't have our main lib
@@ -8,9 +9,15 @@ if (typeof jQuery === 'undefined') {
 }
 
 jQuery(function($) {
-    console.log('page loaded');
     console.log('begin - app01');
-    console.log('app01 logic loaded!');
+
+    // find out where we're at in OnDemand
+    var pathname = window.location.pathname;
+    var index = pathname.lastIndexOf('/');
+    var pageName = pathname.substring(index + 1);
+    
+    console.log('loaded: ' + pageName);
+    
     console.log('end - app01');    
 });
 
