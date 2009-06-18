@@ -1,3 +1,6 @@
+// sandbox ourselves
+(function() {
+    
 // bail if we don't have our main lib
 if (typeof jQuery === 'undefined') {
     alert('Custom application extension failed: jQuery not available');
@@ -10,3 +13,5 @@ jQuery(function($) {
     console.log('app01 logic loaded!');
     console.log('end - app01');    
 });
+
+})();
