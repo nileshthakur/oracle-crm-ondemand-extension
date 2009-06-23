@@ -38,6 +38,10 @@ jQuery(function($) {
     $.getScript(nonCacheableOndemandLibraryURL, function() {
        console.log('finished loading: ' + nonCacheableOndemandLibraryURL);
        
+       if (window.odlib) {
+           window.odlib.ssotoken = '%%%SSO Token%%%';
+       }
+       
        // load app src dynamically to avoid browser caching  
        $.getScript(nonCacheableApplicationSourceURL, function() {
            console.log('finished loading: ' + nonCacheableApplicationSourceURL);

@@ -427,6 +427,42 @@ OnDemandLib.prototype.sso_login = function(ssotoken, callback) {
     } catch (e) { alert('Error: ' + e.message); }
 }
 
+OnDemandLib.prototype.user_login = function(userName, password, callback) {
+    ssotoken = encodeURIComponent(ssotoken);
+    var pageroot = document.location;
+    pageroot = pageroot.toString();
+    pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
+    try {
+        var commandStr = '?command=login';
+        var oXMLHttpRequest = new XMLHttpRequest;
+        if (callback.length > 0) {
+            oXMLHttpRequest.open('GET', pageroot + '/Services/Integration' + commandStr, true);
+            oXMLHttpRequest.onreadystatechange = function() {
+                if (this.readyState == XMLHttpRequest.DONE) {
+                    if (this.status == 200) eval(callback);
+                    else if (this.status == 500) {
+                        alert('Server timeout due to inactivity, reloading page!');
+                        top.location.reload();
+                    }
+                    else alert('Error: ' + this.status + ' - ' + this.responseText);
+                }
+            }
+        }
+        else {
+            oXMLHttpRequest.open('GET', pageroot + '/Services/Integration' + commandStr, false);
+        }
+        
+        oXMLHttpRequest.setRequestHeader('UserName', userName);
+        oXMLHttpRequest.setRequestHeader('Password', password);
+        
+        oXMLHttpRequest.send(null);
+        if (callback.length == 0) {
+            return (oXMLHttpRequest.status == 200);
+        }
+    } catch (e) { alert('Error: ' + e.message); }
+}
+
+
 
 //  ////////////////////////////////////////////////////////////////////////
 //
