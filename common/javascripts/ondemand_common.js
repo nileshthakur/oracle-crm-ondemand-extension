@@ -428,7 +428,6 @@ OnDemandLib.prototype.sso_login = function(ssotoken, callback) {
 }
 
 OnDemandLib.prototype.user_login = function(userName, password, callback) {
-    ssotoken = encodeURIComponent(ssotoken);
     var pageroot = document.location;
     pageroot = pageroot.toString();
     pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
