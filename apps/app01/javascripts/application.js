@@ -18,7 +18,17 @@ jQuery(function($) {
     
     console.log('loaded: ' + pageName);
     
-    console.log('end - app01');    
+    console.log('end - app01');
+    
+    var userName = 'MERCKTEST_CTE01/pfeil';
+    var password = 'method00';
+    
+    odlib.user_login(userName, password, function() {
+        var userFields = ['FirstName', 'LastName'];
+        odlib.query_user(userFields, function(data) {
+            console.dir(data);
+        });
+    });
 });
 
 })();

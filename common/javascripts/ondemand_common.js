@@ -434,16 +434,17 @@ OnDemandLib.prototype.user_login = function(userName, password, callback) {
     try {
         var commandStr = '?command=login';
         var oXMLHttpRequest = new XMLHttpRequest;
-        if (callback.length > 0) {
+        if (callback) {
             oXMLHttpRequest.open('GET', pageroot + '/Services/Integration' + commandStr, true);
             oXMLHttpRequest.onreadystatechange = function() {
                 if (this.readyState == XMLHttpRequest.DONE) {
-                    if (this.status == 200) eval(callback);
-                    else if (this.status == 500) {
+                    if (this.status == 200) {
+                        callback();
+                    } else if (this.status == 500) {
                         alert('Server timeout due to inactivity, reloading page!');
                         top.location.reload();
-                    }
-                    else alert('Error: ' + this.status + ' - ' + this.responseText);
+                    } else {
+                        alert('Error: ' + this.status + ' - ' + this.responseText);
                 }
             }
         }
@@ -455,7 +456,7 @@ OnDemandLib.prototype.user_login = function(userName, password, callback) {
         oXMLHttpRequest.setRequestHeader('Password', password);
         
         oXMLHttpRequest.send(null);
-        if (callback.length == 0) {
+        if (!callback) {
             return (oXMLHttpRequest.status == 200);
         }
     } catch (e) { alert('Error: ' + e.message); }
@@ -507,6 +508,7 @@ OnDemandLib.prototype.sso_logoff = function(callback) {
     } catch (e) { alert('Error: ' + e.message); }
 }
 
+OnDemandLib.prototype.user_logoff = OnDemandLib.prototype.sso_logoff;
 
 //
 //  query_user
@@ -539,12 +541,12 @@ OnDemandLib.prototype.query_user = function(fields, callback) {
     // Submit XML request, run callback function upon response
     try {
         var oXMLHttpRequest = new XMLHttpRequest;
-        if (callback.length > 0) {
+        if (callback) {
 
             oXMLHttpRequest.open('POST', pageroot + '/Services/Integration', true);
             oXMLHttpRequest.onreadystatechange = function() {
                 if (this.readyState == XMLHttpRequest.DONE) {
-                    if (this.status == 200) eval(callback);
+                    if (this.status == 200) callback(oXMLHttpRequest.responseXML);
                     else if (this.status == 500) {
                         alert('Server timeout due to inactivity, reloading page!');
                         top.location.reload();
