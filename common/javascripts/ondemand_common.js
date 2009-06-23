@@ -445,6 +445,7 @@ OnDemandLib.prototype.user_login = function(userName, password, callback) {
                         top.location.reload();
                     } else {
                         alert('Error: ' + this.status + ' - ' + this.responseText);
+                    }
                 }
             }
         }
