@@ -580,6 +580,58 @@ OnDemandLib.prototype.query_user = function(fields, callback) {
     }
 }
 
+OnDemandLib.prototype.my_query_user = function(fields, callback) {
+    var inSoap;
+    var x;
+    var pageroot = document.location;
+    pageroot = pageroot.toString();
+    pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
+
+    inSoap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="urn:crmondemand/ws/user/" xmlns:user1="urn:/crmondemand/xml/user">';
+    inSoap += '<soapenv:Header/>';
+    inSoap += '<soapenv:Body>';
+    inSoap += '<user:UserWS_UserQueryPage_Input>';
+    inSoap += '<user1:ListOfUser>';
+    inSoap += '<user1:User>';
+
+    for (x in fields) {
+        inSoap += '<user1:' + x + '>' + fields[x] + '</user1:' + x + '>';
+    }
+
+    inSoap += '</user1:User>';
+    inSoap += '</user1:ListOfUser>';
+    inSoap += '</user:UserWS_UserQueryPage_Input>';
+    inSoap += '</soapenv:Body>';
+    inSoap += '</soapenv:Envelope>';
+
+    // Submit XML request, run callback function upon response
+    try {
+        
+        jQuery.ajax({
+            url: pageroot + '/Services/Integration',
+            type: 'POST',
+            dataType: 'xml',
+            data: inSoap,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('SOAPAction', '"document/urn:crmondemand/ws/user/:UserQueryPage"');
+                //xhr.setRequestHeader('Content-Type', 'text/xml');
+            },            
+            complete: function(xhr, textStatus) {
+                console.log('begin complete');
+                console.log(textStatus);
+            },
+            success: function(data, textStatus) {
+                console.log('begin success');
+                console.dir(data);
+                callback(data);
+            }
+        });
+    } catch (e) {
+        alert('Error: ' + e.message);
+    }
+}
+
+
 if (!window.odlib) {
     window.odlib = new OnDemandLib;
 }

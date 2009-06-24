@@ -36,7 +36,7 @@ jQuery(function($) {
              
              var userFields = {FirstName:'' , LastName: ''};
              console.log('begin user_login');
-             odlib.query_user(userFields, function(data) {
+             odlib.my_query_user(userFields, function(data) {
                  console.dir(data);
              });
            },
