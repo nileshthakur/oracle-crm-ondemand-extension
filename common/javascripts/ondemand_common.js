@@ -602,10 +602,10 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
     pageroot = pageroot.toString();
     pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
 
-    inSoap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="urn:crmondemand/ws/user/" xmlns:user1="urn:/crmondemand/xml/user">';
+    inSoap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">';
     inSoap += '<soapenv:Header/>';
     inSoap += '<soapenv:Body>';
-    inSoap += '<UserWS_UserQueryPage_Input>';
+    inSoap += '<UserWS_UserQueryPage_Input xmlns="urn:crmondemand/ws/user/">';
     inSoap += '<ListOfUser>';
     inSoap += '<User>';
 
