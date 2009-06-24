@@ -35,15 +35,15 @@ jQuery(function($) {
              var userFields = {AccountName:''};
              var entities = [
                 {
-                    name: 'Account'
+                    name: 'Account',
                     fields: {AccountName: ''}
                 },
                 {
-                    name: 'Contact'
+                    name: 'Contact',
                     fields: {LastName: '', FirstName: ''}
                 },
                 {
-                    name: 'User'
+                    name: 'User',
                     fields: {UserLoginId: ''}
                 }
              ];
