@@ -671,7 +671,7 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     inSoap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">';
     inSoap += '<soapenv:Header/>';
     inSoap += '<soapenv:Body>';
-    inSoap += '<' + entityTypeCapitalized + 'WS_' + entityTypeCapitalized + 'QueryPage_Input xmlns="urn:crmondemand/ws/' + entityTypeLowercase + '/">';
+    inSoap += '<' + entityTypeCapitalized + 'WS_' + entityTypeCapitalized + 'QueryPage_Input xmlns="urn:crmondemand/ws/ecbs/' + entityTypeLowercase + '/">';
     inSoap += '<StartRowNum>' + callback.startRowNum + '</StartRowNum>';
     inSoap += '<PageSize>' + pageSize + '</PageSize>';
     inSoap += '<ListOf' + entityTypeCapitalized + '>';
