@@ -439,6 +439,7 @@ OnDemandLib.prototype.user_login = function(userName, password, callback) {
             console.log('inside callback');
             oXMLHttpRequest.open('GET', pageroot + '/Services/Integration' + commandStr, true);
             oXMLHttpRequest.onreadystatechange = function() {
+                console.log('begin onreadystatechange');
                 if (this.readyState == XMLHttpRequest.DONE) {
                     if (this.status == 200) {
                         console.log('before callback');
