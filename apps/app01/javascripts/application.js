@@ -25,9 +25,11 @@ jQuery(function($) {
     
     odlib.user_login(userName, password, function() {
         var userFields = ['FirstName', 'LastName'];
+        console.log('begin user_login');
         odlib.query_user(userFields, function(data) {
             console.dir(data);
         });
+        console.log('end user_login');        
     });
 });
 
