@@ -605,17 +605,17 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
     inSoap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="urn:crmondemand/ws/user/" xmlns:user1="urn:/crmondemand/xml/user">';
     inSoap += '<soapenv:Header/>';
     inSoap += '<soapenv:Body>';
-    inSoap += '<user:UserWS_UserQueryPage_Input>';
-    inSoap += '<user1:ListOfUser>';
-    inSoap += '<user1:User>';
+    inSoap += '<UserWS_UserQueryPage_Input>';
+    inSoap += '<ListOfUser>';
+    inSoap += '<User>';
 
     for (x in fields) {
-        inSoap += '<user1:' + x + '>' + fields[x] + '</user1:' + x + '>';
+        inSoap += '<' + x + '>' + fields[x] + '</' + x + '>';
     }
 
-    inSoap += '</user1:User>';
-    inSoap += '</user1:ListOfUser>';
-    inSoap += '</user:UserWS_UserQueryPage_Input>';
+    inSoap += '</User>';
+    inSoap += '</ListOfUser>';
+    inSoap += '</UserWS_UserQueryPage_Input>';
     inSoap += '</soapenv:Body>';
     inSoap += '</soapenv:Envelope>';
 
