@@ -36,7 +36,7 @@ jQuery(function($) {
              
              var userFields = {FirstName:'' , LastName: ''};
              console.log('begin user_login');
-             odlib.my_query_user(userFields, function(data) {
+             odlib.entityQuery('user', userFields, function(data) {
                  console.dir(data);
                  alert(data[0]['FirstName']);
              });

@@ -644,6 +644,61 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
     }
 }
 
+OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
+    var that = this;
+    var inSoap;
+    var x;
+    
+    var entityTypeLowercase = entityType.toLowerCase();
+    var entityTypeCapitalized = entityTypeLowercase[0].toUpperCase() + entityTypeLowercase.substring(1);
+    
+    var pageroot = document.location;
+    pageroot = pageroot.toString();
+    pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
+
+    inSoap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">';
+    inSoap += '<soapenv:Header/>';
+    inSoap += '<soapenv:Body>';
+    inSoap += '<' + entityTypeCapitalized + 'WS_' + entityTypeCapitalized + 'QueryPage_Input xmlns="urn:crmondemand/ws/' + entityTypeLowercase + '/">';
+    inSoap += '<ListOf' + entityTypeCapitalized + '>';
+    inSoap += '<' + entityTypeCapitalized + '>';
+
+    for (x in fields) {
+        inSoap += '<' + x + '>' + fields[x] + '</' + x + '>';
+    }
+
+    inSoap += '</' + entityTypeCapitalized + '>';
+    inSoap += '</ListOf' + entityTypeCapitalized + '>';
+    inSoap += '</' + entityTypeCapitalized + 'WS_' + entityTypeCapitalized + 'QueryPage_Input>';
+    inSoap += '</soapenv:Body>';
+    inSoap += '</soapenv:Envelope>';
+
+    // Submit XML request, run callback function upon response
+    try {
+        
+        jQuery.ajax({
+            url: pageroot + '/Services/Integration',
+            type: 'POST',
+            contentType: 'text/xml',
+            dataType: 'xml',
+            data: inSoap,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('SOAPAction', '"document/urn:crmondemand/ws/' + entityTypeLowercase + '/:' + entityTypeCapitalized + 'QueryPage"');
+            },            
+            complete: function(xhr, textStatus) {
+            },
+            success: function(xmlData, textStatus) {
+                var items = that.getListData('User', xmlData);
+                callback(items);
+            }
+        });
+        
+    } catch (e) {
+        alert('Error: ' + e.message);
+    }
+}
+
+
 
 if (!window.odlib) {
     window.odlib = new OnDemandLib;
