@@ -705,7 +705,7 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
                 var items = that.getListData(entityTypeCapitalized, xmlData);
 
                 if (callback.itemsCache) {
-                    callback.itemsCache.concat(items);
+                    callback.itemsCache = callback.itemsCache.concat(items);
                 } else {
                     callback.itemsCache = [].concat(items);
                 }
