@@ -48,7 +48,7 @@ jQuery(function($) {
                 }
              ];
              
-             jQuery.each(function(index, entity) {
+             jQuery.each(entities, function(index, entity) {
                  odlib.entityQuery(entity.name, entity.fields, function(data) {
                      console.log(entity.name + ' count = ' + data.length);
                  });                 
