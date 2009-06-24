@@ -658,13 +658,13 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     
     var pageSize = 5;
     
-    if (!callback.startRowNum) {
+    if (typeof callback.startRowNum === 'undefined') {
          callback.startRowNum = 0;
     } else {
         if (callback.startRowNum === 0) {
             callback.startRowNum = pageSize + 1;
         } else {
-            callback.startRowNum += pageSize;
+            callback.startRowNum = callback.startRowNum + pageSize;
         }
     }
 
