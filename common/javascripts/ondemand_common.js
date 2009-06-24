@@ -633,7 +633,7 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
             },            
             complete: function(xhr, textStatus) {
             },
-            success: function(data, textStatus) {
+            success: function(xmlData, textStatus) {
                 var items = that.getListData('User', xmlData);
                 callback(items);
             }
