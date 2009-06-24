@@ -625,6 +625,7 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
                 console.log('begin success');
                 console.dir(data);
                 callback(data);
+                window.data = data;
             }
         });
     } catch (e) {
