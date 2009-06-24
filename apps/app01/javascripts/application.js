@@ -23,15 +23,33 @@ jQuery(function($) {
     var testfn = function() {
         var userName = 'MERCKTEST_CTE01/pfeil';
         var password = 'method00';
-    
-        odlib.user_login(userName, password, function() {
-            var userFields = ['FirstName', 'LastName'];
-            console.log('begin user_login');
-            odlib.query_user(userFields, function(data) {
-                console.dir(data);
-            });
-            console.log('end user_login');        
+        
+        jQuery.ajax({
+           url: '/Services/Integration?command=login',
+           beforeSend: function(xhr) {
+               xhr.setRequestHeader('UserName', userName);
+               xhr.setRequestHeader('Password', password);               
+           },
+           complete: function(xhr, textStatus) {
+             console.log('begin complete');
+             console.dir(xhr);
+             console.log(textStatus);  
+           },
+           success: function(data, textStatus) {
+               console.log('begin success');               
+               console.dir(data);
+               console.dir(textStatus);
+           }
         });
+    
+        // odlib.user_login(userName, password, function() {
+        //     var userFields = ['FirstName', 'LastName'];
+        //     console.log('begin user_login');
+        //     odlib.query_user(userFields, function(data) {
+        //         console.dir(data);
+        //     });
+        //     console.log('end user_login');        
+        // });
     };
     
     window.testfn = testfn;
