@@ -31,19 +31,31 @@ jQuery(function($) {
                xhr.setRequestHeader('UserName', userName);
                xhr.setRequestHeader('Password', password);               
            },
-           complete: function(xhr, textStatus) {
-             console.log('begin complete');
-             
+           complete: function(xhr, textStatus) {             
              var userFields = {AccountName:''};
-             console.log('begin user_login');
-             odlib.entityQuery('Account', userFields, function(data) {
-                 console.dir(data);
+             var entities = [
+                {
+                    name: 'Account'
+                    fields: {AccountName: ''}
+                },
+                {
+                    name: 'Contact'
+                    fields: {LastName: '', FirstName: ''}
+                },
+                {
+                    name: 'User'
+                    fields: {UserLoginId: ''}
+                }
+             ];
+             
+             jQuery.each(function(index, entity) {
+                 odlib.entityQuery(entity.name, entity.fields, function(data) {
+                     console.log(entity.name + ' count = ' + data.length);
+                 });                 
              });
+             
            },
            success: function(data, textStatus) {
-               console.log('begin success');               
-               console.dir(data);
-               console.dir(textStatus);
            }
         });
     
