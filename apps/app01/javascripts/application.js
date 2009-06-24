@@ -34,7 +34,7 @@ jQuery(function($) {
            complete: function(xhr, textStatus) {
              console.log('begin complete');
              
-             var userFields = ['FirstName', 'LastName'];
+             var userFields = {FirstName:'' , LastName: ''};
              console.log('begin user_login');
              odlib.query_user(userFields, function(data) {
                  console.dir(data);
