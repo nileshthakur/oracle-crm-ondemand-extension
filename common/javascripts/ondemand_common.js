@@ -655,11 +655,23 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     var pageroot = document.location;
     pageroot = pageroot.toString();
     pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
+    
+    var pageSize = 100;
+    if (callback.more) {
+        pageSize += 1;
+    }
+    
+    // if (!callback.startRowNum) {
+    //     callback.startRowNum = 0;
+    // } else {
+    //     callback.startRowNum += 101;
+    // }
 
     inSoap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">';
     inSoap += '<soapenv:Header/>';
     inSoap += '<soapenv:Body>';
     inSoap += '<' + entityTypeCapitalized + 'WS_' + entityTypeCapitalized + 'QueryPage_Input xmlns="urn:crmondemand/ws/' + entityTypeLowercase + '/">';
+    inSoap += '<PageSize>' + pageSize + '</PageSize>';
     inSoap += '<ListOf' + entityTypeCapitalized + '>';
     inSoap += '<' + entityTypeCapitalized + '>';
 
@@ -688,9 +700,24 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
             complete: function(xhr, textStatus) {
             },
             success: function(xmlData, textStatus) {
-                window.xmlData = xmlData;
                 var items = that.getListData(entityTypeCapitalized, xmlData);
-                callback(items);
+
+                if (callback.itemsCache) {
+                    callback.itemsCache.concat(items);
+                } else {
+                    callback.itemsCache = [].concat(items);
+                }
+
+                var lastPage = jQuery('ns\\:LastPage', xmlData).text().toLowerCase();
+
+                if (lastPage === 'true') {
+                    callback.more = false;
+                    callback(callback.itemsCache);
+                } else {
+                    callback.more = true;
+                    that.entityQuery(entityType, fields, callback);                    
+                }
+                window.xmlData = xmlData;
             }
         });
         
