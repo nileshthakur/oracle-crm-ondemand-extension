@@ -439,7 +439,9 @@ OnDemandLib.prototype.user_login = function(userName, password, callback) {
             oXMLHttpRequest.onreadystatechange = function() {
                 if (this.readyState == XMLHttpRequest.DONE) {
                     if (this.status == 200) {
+                        console.log('before callback');
                         callback();
+                        console.log('after callback');                        
                     } else if (this.status == 500) {
                         alert('Server timeout due to inactivity, reloading page!');
                         top.location.reload();
