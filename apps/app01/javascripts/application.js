@@ -40,7 +40,7 @@ jQuery(function($) {
                 },
                 {
                     name: 'Contact',
-                    fields: {LastName: '', FirstName: ''}
+                    fields: {ContactFullName: ''}
                 },
                 {
                     name: 'User',
