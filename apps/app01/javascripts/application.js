@@ -33,8 +33,12 @@ jQuery(function($) {
            },
            complete: function(xhr, textStatus) {
              console.log('begin complete');
-             console.dir(xhr);
-             console.log(textStatus);  
+             
+             var userFields = ['FirstName', 'LastName'];
+             console.log('begin user_login');
+             odlib.query_user(userFields, function(data) {
+                 console.dir(data);
+             });
            },
            success: function(data, textStatus) {
                console.log('begin success');               
