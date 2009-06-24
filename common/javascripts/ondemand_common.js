@@ -688,7 +688,7 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
             complete: function(xhr, textStatus) {
             },
             success: function(xmlData, textStatus) {
-                var items = that.getListData('User', xmlData);
+                var items = that.getListData(entityTypeCapitalized, xmlData);
                 callback(items);
             }
         });
