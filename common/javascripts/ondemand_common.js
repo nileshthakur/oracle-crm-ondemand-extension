@@ -656,7 +656,7 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     pageroot = pageroot.toString();
     pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
     
-    var pageSize = 100;
+    var pageSize = 10;
     if (callback.more) {
         pageSize += 1;
     }
