@@ -610,11 +610,12 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
         jQuery.ajax({
             url: pageroot + '/Services/Integration',
             type: 'POST',
+            contentType: 'text/xml',
             dataType: 'xml',
             data: inSoap,
             beforeSend: function(xhr) {
                 xhr.setRequestHeader('SOAPAction', '"document/urn:crmondemand/ws/user/:UserQueryPage"');
-                xhr.setRequestHeader('Content-Type', 'text/xml');
+                //xhr.setRequestHeader('Content-Type', 'text/xml');
             },            
             complete: function(xhr, textStatus) {
                 console.log('begin complete');
