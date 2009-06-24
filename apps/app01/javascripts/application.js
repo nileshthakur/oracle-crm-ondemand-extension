@@ -26,6 +26,7 @@ jQuery(function($) {
         
         jQuery.ajax({
            url: '/Services/Integration?command=login',
+           dataType: 'xml',
            beforeSend: function(xhr) {
                xhr.setRequestHeader('UserName', userName);
                xhr.setRequestHeader('Password', password);               
