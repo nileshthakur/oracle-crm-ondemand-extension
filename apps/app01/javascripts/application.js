@@ -34,11 +34,10 @@ jQuery(function($) {
            complete: function(xhr, textStatus) {
              console.log('begin complete');
              
-             var userFields = {FirstName:'' , LastName: ''};
+             var userFields = {AccountName:''};
              console.log('begin user_login');
-             odlib.entityQuery('user', userFields, function(data) {
+             odlib.entityQuery('Account', userFields, function(data) {
                  console.dir(data);
-                 alert(data[0]['FirstName']);
              });
            },
            success: function(data, textStatus) {
