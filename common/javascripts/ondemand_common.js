@@ -580,7 +580,22 @@ OnDemandLib.prototype.query_user = function(fields, callback) {
     }
 }
 
+OnDemandLib.prototype.getListData = function(type, xmlData) {
+    var arr = [];
+    jQuery(type, xmlData).each(function(index, item) {
+        var obj = {};
+        jQuery(item).children().each(function(index, item) {
+          var fieldName = jQuery(item).get(0).tagName;
+          var fieldValue = jQuery(item).text();
+          obj[fieldName] = fieldValue;
+        });
+        arr.push(obj);
+    });
+    return arr;    
+}
+
 OnDemandLib.prototype.my_query_user = function(fields, callback) {
+    var that = this;
     var inSoap;
     var x;
     var pageroot = document.location;
@@ -626,6 +641,9 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
                 console.dir(data);
                 callback(data);
                 window.data = data;
+                var xmlData = data;
+                var items = that.getListData('User', xmlData);
+                callback(items);
             }
         });
     } catch (e) {
