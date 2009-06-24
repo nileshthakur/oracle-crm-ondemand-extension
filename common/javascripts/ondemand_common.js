@@ -454,6 +454,7 @@ OnDemandLib.prototype.user_login = function(userName, password, callback) {
             }
         }
         else {
+            console.log('else path');
             oXMLHttpRequest.open('GET', pageroot + '/Services/Integration' + commandStr, false);
         }
         
