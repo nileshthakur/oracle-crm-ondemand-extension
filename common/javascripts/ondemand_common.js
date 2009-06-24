@@ -711,8 +711,8 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
                 }
 
                 var lastPage = jQuery('ns\\:LastPage', xmlData).text().toLowerCase();
-
-                if (lastPage === 'true') {
+                console.log('|' + lastPage + '|');
+                if (lastPage == 'true') {
                     callback.more = false;
                     callback(callback.itemsCache);
                 } else {
