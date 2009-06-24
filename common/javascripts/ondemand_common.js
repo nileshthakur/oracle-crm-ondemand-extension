@@ -697,7 +697,7 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
             dataType: 'xml',
             data: inSoap,
             beforeSend: function(xhr) {
-                xhr.setRequestHeader('SOAPAction', '"document/urn:crmondemand/ws/ecbs/' + entityTypeLowercase + '/:' + entityTypeCapitalized + 'QueryPage"');
+                xhr.setRequestHeader('SOAPAction', '"document/urn:crmondemand/ws/' + entityTypeLowercase + '/:' + entityTypeCapitalized + 'QueryPage"');
             },            
             complete: function(xhr, textStatus) {
             },
