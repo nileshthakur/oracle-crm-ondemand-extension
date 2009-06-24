@@ -59,6 +59,7 @@ jQuery(function($) {
     };
     
     window.testfn = testfn;
+    testfn();
 });
 
 })();
