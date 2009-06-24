@@ -656,21 +656,23 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     pageroot = pageroot.toString();
     pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
     
-    var pageSize = 10;
-    if (callback.more) {
-        pageSize += 1;
-    }
+    var pageSize = 5;
     
-    // if (!callback.startRowNum) {
-    //     callback.startRowNum = 0;
-    // } else {
-    //     callback.startRowNum += 101;
-    // }
+    if (!callback.startRowNum) {
+         callback.startRowNum = 0;
+    } else {
+        if (callback.startRowNum === 0) {
+            callback.startRowNum = pageSize + 1;
+        } else {
+            callback.startRowNum += pageSize;
+        }
+    }
 
     inSoap = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">';
     inSoap += '<soapenv:Header/>';
     inSoap += '<soapenv:Body>';
     inSoap += '<' + entityTypeCapitalized + 'WS_' + entityTypeCapitalized + 'QueryPage_Input xmlns="urn:crmondemand/ws/' + entityTypeLowercase + '/">';
+    inSoap += '<StartRowNum>' + callback.startRowNum + '</StartRowNum>';
     inSoap += '<PageSize>' + pageSize + '</PageSize>';
     inSoap += '<ListOf' + entityTypeCapitalized + '>';
     inSoap += '<' + entityTypeCapitalized + '>';
