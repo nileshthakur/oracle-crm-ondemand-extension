@@ -38,6 +38,7 @@ jQuery(function($) {
              console.log('begin user_login');
              odlib.my_query_user(userFields, function(data) {
                  console.dir(data);
+                 alert(data[0]['FirstName']);
              });
            },
            success: function(data, textStatus) {
