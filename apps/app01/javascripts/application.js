@@ -56,7 +56,7 @@ jQuery(function($) {
              });
              */
              
-             var soapAction = 'document/urn:crmondemand/ws/activity/:Activity_QueryPage';
+             var soapAction = 'document/urn:crmondemand/ws/activity/10/2004:Activity_QueryPage';
              var soapRequest = '' +
                  '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:par="urn:crmondemand/ws/activity" xmlns:act="urn:/crmondemand/xml/activity">' +
                  '   <soapenv:Header/>' +
