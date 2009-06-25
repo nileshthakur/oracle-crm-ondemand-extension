@@ -58,7 +58,7 @@ jQuery(function($) {
              
              var soapAction = 'document/urn:crmondemand/ws/activity/10/2004:Activity_QueryPage';
              var soapRequest = '' +
-                 '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:par="urn:crmondemand/ws/activity" xmlns:act="urn:/crmondemand/xml/activity">' +
+                 '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:par="urn:crmondemand/ws/activity/10/2004" xmlns:act="urn:/crmondemand/xml/activity">' +
                  '   <soapenv:Header/>' +
                  '   <soapenv:Body>' +
                  '      <par:ActivityNWS_Activity_QueryPage_Input>' +
