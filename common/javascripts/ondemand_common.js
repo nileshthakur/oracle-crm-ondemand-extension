@@ -644,6 +644,45 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
     }
 }
 
+OnDemandLib.prototype.manualQuery = function(entityType, soapAction, soapRequest, callback) {
+    var that = this;
+    
+    var entityTypeLowercase = entityType.toLowerCase();
+    var entityTypeCapitalized = entityTypeLowercase[0].toUpperCase() + entityTypeLowercase.substring(1);    
+    
+    jQuery.ajax({
+        url: pageroot + '/Services/Integration',
+        type: 'POST',
+        contentType: 'text/xml',
+        dataType: 'xml',
+        data: soapRequest,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('SOAPAction', '"' + soapAction + '"');
+        },            
+        success: function(xmlData, textStatus) {
+            var items = that.getListData(entityTypeCapitalized, xmlData);
+
+            if (callback.itemsCache) {
+                callback.itemsCache = callback.itemsCache.concat(items);
+            } else {
+                callback.itemsCache = [].concat(items);
+            }
+
+            var lastPage = jQuery('ns\\:LastPage', xmlData).text().toLowerCase();
+
+            if (lastPage == 'true') {
+                callback.more = false;
+                callback(callback.itemsCache);
+            } else {
+                callback.more = true;
+                that.entityQuery(entityType, fields, callback);                    
+            }
+            window.xmlData = xmlData;
+        }
+    });
+
+}
+
 OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     var that = this;
     var inSoap;

@@ -48,10 +48,33 @@ jQuery(function($) {
                 }
              ];
              
+             /*
              jQuery.each(entities, function(index, entity) {
                  odlib.entityQuery(entity.name, entity.fields, function(data) {
                      console.log(entity.name + ' count = ' + data.length);
                  });                 
+             });
+             */
+             
+             var soapAction = 'document/urn:crmondemand/ws/activity:ActivityQueryPage';
+             var soapRequest = '' +
+                 '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:par="urn:crmondemand/ws/activity" xmlns:act="urn:/crmondemand/xml/activity">' +
+                 '   <soapenv:Header/>' +
+                 '   <soapenv:Body>' +
+                 '      <par:ActivityNWS_Activity_QueryPage_Input>' +
+                 '         <par:PageSize>100</par:PageSize>' +
+                 '         <act:ListOfActivity>' +
+                 '            <act:Activity>' +
+                 '               <act:ActivityId></act:ActivityId>' +
+                 '            </act:Activity>' +
+                 '         </act:ListOfActivity>' +
+                 '         <par:StartRowNum>0</par:StartRowNum>' +
+                 '      </par:ActivityNWS_Activity_QueryPage_Input>' +
+                 '   </soapenv:Body>' +
+                 '</soapenv:Envelope>';
+             
+             odlib.manualQuery('Activity', soapAction, soapRequest, function(data) {
+                 console.dir(data);
              });
              
            },
