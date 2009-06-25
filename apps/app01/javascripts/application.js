@@ -58,18 +58,18 @@ jQuery(function($) {
              
              var soapAction = 'document/urn:crmondemand/ws/activity/10/2004:Activity_QueryPage';
              var soapRequest = '' +
-                 '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:par="urn:crmondemand/ws/activity/10/2004" xmlns:act="urn:/crmondemand/xml/activity">' +
+                 '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="urn:/crmondemand/xml/activity">' +
                  '   <soapenv:Header/>' +
                  '   <soapenv:Body>' +
-                 '      <par:ActivityNWS_Activity_QueryPage_Input>' +
-                 '         <par:PageSize>100</par:PageSize>' +
+                 '      <ActivityNWS_Activity_QueryPage_Input xmlns="urn:crmondemand/ws/activity/10/2004">' +
+                 '         <PageSize>100</PageSize>' +
                  '         <act:ListOfActivity>' +
                  '            <act:Activity>' +
                  '               <act:ActivityId></act:ActivityId>' +
                  '            </act:Activity>' +
                  '         </act:ListOfActivity>' +
-                 '         <par:StartRowNum>0</par:StartRowNum>' +
-                 '      </par:ActivityNWS_Activity_QueryPage_Input>' +
+                 '         <StartRowNum>0</StartRowNum>' +
+                 '      </ActivityNWS_Activity_QueryPage_Input>' +
                  '   </soapenv:Body>' +
                  '</soapenv:Envelope>';
              
