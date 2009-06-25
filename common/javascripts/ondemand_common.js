@@ -647,6 +647,10 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
 OnDemandLib.prototype.manualQuery = function(entityType, soapAction, soapRequest, callback) {
     var that = this;
     
+    var pageroot = document.location;
+    pageroot = pageroot.toString();
+    pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));    
+    
     var entityTypeLowercase = entityType.toLowerCase();
     var entityTypeCapitalized = entityTypeLowercase[0].toUpperCase() + entityTypeLowercase.substring(1);    
     
