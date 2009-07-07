@@ -24,7 +24,7 @@ jQuery(function($) {
         valueLabel.mouseover();
         valueLabel.click();
         var inlineEditor = jQuery('.iled');
-        inlineEditor.val('my objective');
+        inlineEditor.val((new Date()).toString() + ': last objective' );
         var okButton = inlineEditor.parent().next().children().get(0);
         okButton.click();
         valueLabel.mouseout();        
