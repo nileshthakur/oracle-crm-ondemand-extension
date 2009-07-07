@@ -40,7 +40,7 @@ jQuery(function($) {
                 },
                 {
                     name: 'Contact',
-                    fields: {ContactFullName: ''}
+                    fields: {ContactFullName: '', Id: ''}
                 },
                 {
                     name: 'User',
@@ -55,6 +55,10 @@ jQuery(function($) {
                  });                 
              });
              */
+             
+             odlib.entityQuery('Contact', {ContactFullName: '', Id: ''}, function(data) {
+                 console.dir(data);
+              });             
              
              var soapAction = 'document/urn:crmondemand/ws/activity/10/2004:Activity_QueryPage';
              var soapRequest = '' +
