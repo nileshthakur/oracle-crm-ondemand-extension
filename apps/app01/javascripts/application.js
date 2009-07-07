@@ -16,6 +16,20 @@ jQuery(function($) {
     var index = pathname.lastIndexOf('/');
     var pageName = pathname.substring(index + 1);
     
+    // ContactCallDetail
+    
+    if (pageName === 'ContactCallDetail') {
+        // autopopulate Objective with previous call objective
+        var valueLabel = jQuery( jQuery("td:contains('Objective')")[1] ).next();
+        valueLabel.mouseover();
+        valueLabel.click();
+        var inlineEditor = jQuery('.iled');
+        inlineEditor.val('my objective');
+        var okButton = inlineEditor.parent().next().children().get(0);
+        okButton.click();
+        valueLabel.mouseout();        
+    }
+    
     console.log('loaded: ' + pageName);
     
     console.log('end - app01');
