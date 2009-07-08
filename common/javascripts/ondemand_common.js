@@ -644,7 +644,7 @@ OnDemandLib.prototype.my_query_user = function(fields, callback) {
     }
 }
 
-OnDemandLib.prototype.manualQuery = function(entityType, soapAction, soapRequest, callback) {
+OnDemandLib.prototype.manualQuery = function(entityType, fields, soapAction, soapRequestTemplate, callback) {
     var that = this;
     
     var pageroot = document.location;
@@ -652,7 +652,15 @@ OnDemandLib.prototype.manualQuery = function(entityType, soapAction, soapRequest
     pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));    
     
     var entityTypeLowercase = entityType.toLowerCase();
-    var entityTypeCapitalized = entityTypeLowercase[0].toUpperCase() + entityTypeLowercase.substring(1);    
+    var entityTypeCapitalized = entityTypeLowercase[0].toUpperCase() + entityTypeLowercase.substring(1); 
+    
+    var fieldsXML = '';
+    for (fieldName in fields) {
+        fieldsXML += '<' + fieldName + '>' + fields[fieldName] + '</' + fieldName + '>';
+    }
+    
+    var soapRequest = soapRequestTemplate.replace("<%=fields%>", fieldsXML);
+      
     
     jQuery.ajax({
         url: pageroot + '/Services/Integration',

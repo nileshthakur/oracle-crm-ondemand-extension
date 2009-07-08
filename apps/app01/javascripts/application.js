@@ -75,7 +75,7 @@ jQuery(function($) {
               });             
              
              var soapAction = 'document/urn:crmondemand/ws/activity/10/2004:Activity_QueryPage';
-             var soapRequest = '' +
+             var soapRequestTemplate = '' +
                  '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">' +
                  '   <soapenv:Header/>' +
                  '   <soapenv:Body>' +
@@ -83,17 +83,7 @@ jQuery(function($) {
                  '         <PageSize>100</PageSize>' +
                  '         <ListOfActivity>' +
                  '            <Activity>' +
-                 '               <ActivityId></ActivityId>' +
-                 '               <Owner></Owner>' +                 
-                 '               <AccountId></AccountId>' +                   
-                 '               <CallType></CallType>' +                                    
-                 '               <PrimaryContact></PrimaryContact>' +                                                     
-                 '               <CreatedBy></CreatedBy>' +                  
-                 '               <Location></Location>' +                  
-                 '               <Objective></Objective>' +                                                    
-                 '               <OwnerId></OwnerId>' +                                                                     
-                 '               <Status></Status>' +                                                                     
-                 '               <Type></Type>' +                                                                                                       
+                 '               <%=fields%>' +
                  '            </Activity>' +
                  '         </ListOfActivity>' +
                  '         <StartRowNum>0</StartRowNum>' +
@@ -101,7 +91,22 @@ jQuery(function($) {
                  '   </soapenv:Body>' +
                  '</soapenv:Envelope>';
              
-             odlib.manualQuery('Activity', soapAction, soapRequest, function(data) {
+             var fields = {
+                 ActivityId: '',
+                 Owner: '',
+                 AccountId: '',
+                 CallType: '',
+                 PrimaryContact: '',
+                 CreatedBy: '',
+                 Location: '',
+                 Objective: '',
+                 OwnerId: '',
+                 Status: '',
+                 Type: '',
+                 ActivitySubType: ''
+             };
+             
+             odlib.manualQuery('Activity', fields, soapAction, soapRequestTemplate, function(data) {
                  console.dir(data);
              });
              
