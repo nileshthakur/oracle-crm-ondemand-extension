@@ -106,7 +106,11 @@ jQuery(function($) {
                  OwnerId: " ='AAPA-2GC5WR' ",
                  Status: '',
                  Type: '',
-                 ActivitySubType: ''
+                 ActivitySubType: '',
+                 CreatedDate: '',
+                 ModifiedDate: ''
+                 Date: '',
+                 EndTime: ''
              };
              
              odlib.manualQuery('Activity', fields, soapAction, soapRequestTemplate, function(data) {
