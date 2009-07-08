@@ -112,7 +112,7 @@ var pluginsDefinitions = [
 //***************************************************************************
 
 // find out where we're at in OnDemand
-function installPlugins() {
+function applyPlugins() {
     var pluginManager = new PluginManager(pluginsDefinitions);
     pluginManager.applyPlugins();
 }
