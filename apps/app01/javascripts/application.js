@@ -93,6 +93,7 @@ jQuery(function($) {
                        CreatedDate: '',
                        ModifiedDate: '',
                        Date: '',
+                       StartTime: '',
                        EndTime: ''
                    };
                    
