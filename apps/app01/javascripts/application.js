@@ -25,8 +25,6 @@ jQuery(function($) {
     
     if (pageName === 'ContactCallDetail') {
         
-        var ownerId = $get('ContactCallEditForm.Owner Id').val(); // $("[id='ContactCallEditForm.Owner Id']").val();
-        var contactPerId = $get('ContactCallEditForm.Contact Per Id').val(); //$("[id='ContactCallEditForm.Contact Per Id']").val();
         
         var valueLabel = $( $("td:contains('Objective')")[1] ).next();
         
@@ -47,7 +45,7 @@ jQuery(function($) {
         
         }
     }
-    
+        
     console.log('loaded: ' + pageName);
     
     console.log('end - app01');
@@ -64,7 +62,21 @@ jQuery(function($) {
                xhr.setRequestHeader('UserName', userName);
                xhr.setRequestHeader('Password', password);               
            },
-           complete: function(xhr, textStatus) {           
+           complete: function(xhr, textStatus) {    
+               
+               if (pageName === 'ContactCallEdit') {
+                   var ownerId = $get('ContactCallEditForm.Owner Id').val(); // $("[id='ContactCallEditForm.Owner Id']").val();
+                   var contactPerId = $get('ContactCallEditForm.Contact Per Id').val(); //$("[id='ContactCallEditForm.Contact Per Id']").val();
+                   var $objectiveInputElement = $get('ContactCallEditForm.VONDMED Call');
+                   var objectiveValue = $objectiveInputElement.val();
+
+                   var obj = {ownerId: ownerId, contactPerId: contactPerId, objectiveValue: objectiveValue};
+
+                   console.dir(obj);
+               }
+               
+               return;               
+                      
              var userFields = {AccountName:''};
              var entities = [
                 {
