@@ -84,6 +84,16 @@ jQuery(function($) {
                  '         <ListOfActivity>' +
                  '            <Activity>' +
                  '               <ActivityId></ActivityId>' +
+                 '               <Owner></Owner>' +                 
+                 '               <AccountId></AccountId>' +                   
+                 '               <CallType></CallType>' +                                    
+                 '               <PrimaryContact></PrimaryContact>' +                                                     
+                 '               <CreatedBy></CreatedBy>' +                  
+                 '               <Location></Location>' +                  
+                 '               <Objective></Objective>' +                                                    
+                 '               <OwnerId></OwnerId>' +                                                                     
+                 '               <Status></Status>' +                                                                     
+                 '               <Type></Type>' +                                                                                                       
                  '            </Activity>' +
                  '         </ListOfActivity>' +
                  '         <StartRowNum>0</StartRowNum>' +
