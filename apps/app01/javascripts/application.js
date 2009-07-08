@@ -93,7 +93,7 @@ jQuery(function($) {
              
              var fields = {
                  ActivityId: '',
-                 PrimaryContactId: 'AAPA-2GC5M7',
+                 PrimaryContactId: " ='AAPA-2GC5M7' ",
                  PrimaryContactLastName: '',
                  PrimaryContactFirstName: '',
                  Owner: '',
@@ -103,7 +103,7 @@ jQuery(function($) {
                  CreatedBy: '',
                  Location: '',
                  Objective: '',
-                 OwnerId: 'AAPA-2GC5WR',
+                 OwnerId: " ='AAPA-2GC5WR' ",
                  Status: '',
                  Type: '',
                  ActivitySubType: ''
