@@ -93,6 +93,9 @@ jQuery(function($) {
              
              var fields = {
                  ActivityId: '',
+                 PrimaryContactId: '',
+                 PrimaryContactLastName: '',
+                 PrimaryContactFirstName: '',
                  Owner: '',
                  AccountId: '',
                  CallType: '',
