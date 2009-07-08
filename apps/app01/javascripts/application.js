@@ -73,6 +73,33 @@ jQuery(function($) {
                    var obj = {ownerId: ownerId, contactPerId: contactPerId, objectiveValue: objectiveValue};
 
                    console.dir(obj);
+                   
+                   var fields = {
+                       ActivityId: '',
+                       PrimaryContactId: " ='" + contactPerId "' ",
+                       PrimaryContactLastName: '',
+                       PrimaryContactFirstName: '',
+                       Owner: '',
+                       AccountId: '',
+                       CallType: '',
+                       PrimaryContact: '',
+                       CreatedBy: '',
+                       Location: '',
+                       Objective: '',
+                       OwnerId: " ='" + ownerId + "' ",
+                       Status: '',
+                       Type: '',
+                       ActivitySubType: '',
+                       CreatedDate: '',
+                       ModifiedDate: '',
+                       Date: '',
+                       EndTime: ''
+                   };
+                   
+                    odlib.activityQuery(fields, function(data) {
+                        console.dir(data);
+                   });
+                   
                }
                
                return;               
