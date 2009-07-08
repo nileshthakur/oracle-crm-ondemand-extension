@@ -82,7 +82,6 @@ jQuery(function($) {
              */
              
              odlib.entityQuery('Contact', {ContactFullName: '', ContactId: ''}, function(data) {
-                 alert( JSON.stringify(data) );
                  console.dir(data);
               });
                         
@@ -126,12 +125,12 @@ jQuery(function($) {
                  EndTime: ''
              };
              
-             /*
+             
              odlib.manualQuery('Activity', fields, soapAction, soapRequestTemplate, function(data) {
+                 alert( JSON.stringify(data) );
                  console.dir(data);
-                 alert('retrieved ' + data.length + ' Activity records');
              });
-             */
+             
              
            },
            success: function(data, textStatus) {
