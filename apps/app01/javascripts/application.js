@@ -125,6 +125,7 @@ jQuery(function($) {
              
              odlib.manualQuery('Activity', fields, soapAction, soapRequestTemplate, function(data) {
                  console.dir(data);
+                 alert('retrieved ' + data.length + ' Activity records');
              });
              
            },
