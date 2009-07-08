@@ -108,7 +108,7 @@ jQuery(function($) {
                  Type: '',
                  ActivitySubType: '',
                  CreatedDate: '',
-                 ModifiedDate: ''
+                 ModifiedDate: '',
                  Date: '',
                  EndTime: ''
              };
