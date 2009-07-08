@@ -652,7 +652,7 @@ OnDemandLib.prototype.manualQuery = function(entityType, fields, soapAction, soa
     pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));    
     
     var entityTypeLowercase = entityType.toLowerCase();
-    var entityTypeCapitalized = entityTypeLowercase[0].toUpperCase() + entityTypeLowercase.substring(1); 
+    var entityTypeCapitalized = entityTypeLowercase.substring(0,1).toUpperCase() + entityTypeLowercase.substring(1); 
     
     var fieldsXML = '';
     for (fieldName in fields) {
