@@ -124,10 +124,12 @@ jQuery(function($) {
                  EndTime: ''
              };
              
+             /*
              odlib.manualQuery('Activity', fields, soapAction, soapRequestTemplate, function(data) {
                  console.dir(data);
                  alert('retrieved ' + data.length + ' Activity records');
              });
+             */
              
            },
            success: function(data, textStatus) {
