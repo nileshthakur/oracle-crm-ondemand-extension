@@ -19,15 +19,25 @@ jQuery(function($) {
     // ContactCallDetail
     
     if (pageName === 'ContactCallDetail') {
-        // autopopulate Objective with previous call objective
-        var valueLabel = jQuery( jQuery("td:contains('Objective')")[1] ).next();
-        valueLabel.mouseover();
-        valueLabel.click();
-        var inlineEditor = jQuery('.iled');
-        inlineEditor.val((new Date()).toString() + ': last objective' );
-        var okButton = inlineEditor.parent().next().children().get(0);
-        okButton.click();
-        valueLabel.mouseout();        
+
+        var valueLabel = $( $("td:contains('Objective')")[1] ).next();
+        
+        // TODO: implement objective exists logic
+        var currentCallObjectiveExists = $.trim( valueLabel.text() ) !== '';
+        
+        if (!currentCallObjectiveExists) {
+        
+            // autopopulate Objective with previous call objective
+
+            valueLabel.mouseover();
+            valueLabel.click();
+            var inlineEditor = jQuery('.iled');
+            inlineEditor.val((new Date()).toString() + ': last objective' );
+            var okButton = inlineEditor.parent().next().children().get(0);
+            okButton.click();
+            valueLabel.mouseout();
+        
+        }
     }
     
     console.log('loaded: ' + pageName);
