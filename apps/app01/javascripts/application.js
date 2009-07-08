@@ -76,10 +76,12 @@ function PluginManager(pluginDefinitions) { this.pluginDefinitions = pluginDefin
 
 PluginManager.prototype.applyPlugins = function() {
 
+    // find out where we're at within the OnDemand application based on the URL
     var pathname = window.location.pathname;
     var index = pathname.lastIndexOf('/');
     var pageName = pathname.substring(index + 1);
 
+    // apply plugins based on the URL pattern match
     $.each(this.pluginDefinitions, function(index, plugin) {   
 
         console.log('checking plugin match: ' + plugin.name);
