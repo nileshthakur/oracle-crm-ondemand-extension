@@ -98,6 +98,9 @@ jQuery(function($) {
                    };
                    
                     odlib.activityQuery(fields, function(data) {
+                        data.sort(function(item1, item2) {
+                            return Date.parse(item1.StartTime) - Date.parse(item2.StartTime);
+                        });
                         console.dir(data);
                    });
                    
