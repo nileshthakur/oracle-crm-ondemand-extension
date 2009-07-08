@@ -2,6 +2,11 @@
 
 function OnDemandLib() {}
 
+OnDemandLib.prototype.admin = {
+    userName: 'MERCKTEST_CTE01/pfeil',
+    password: 'method00'
+};
+
 //
 //  Charles's JavaScript Library for CRM On Demand R16
 //
@@ -800,6 +805,26 @@ OnDemandLib.prototype.activityQuery = function(fields, callback) {
         callback(data);
     });
 }
+
+OnDemandLib.prototype.login = function(callback) {
+
+    var userName = this.admin.userName;
+    var password = this.admin.password;
+
+    jQuery.ajax({
+       url: '/Services/Integration?command=login',
+       dataType: 'xml',
+       beforeSend: function(xhr) {
+           xhr.setRequestHeader('UserName', userName);
+           xhr.setRequestHeader('Password', password);               
+       },
+       complete: function(xhr, textStatus) {
+           callback.call(this, xhr, textStatus);    
+       }
+   });
+    
+}
+
 
 
 
