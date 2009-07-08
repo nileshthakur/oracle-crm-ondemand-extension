@@ -55,6 +55,10 @@
     // scripts to load
     var scriptDefinitions = [
         {
+            name: 'json2',
+            url: 'http://www.json.org/json2.js'  
+        },
+        {
             name: 'firebugx',
             url: 'http://fbug.googlecode.com/svn-history/r3153/lite/branches/firebug1.1/firebugx.js',
             callback: function(scriptDefinition) { console.log('loaded ' + scriptDefinition.name);  }

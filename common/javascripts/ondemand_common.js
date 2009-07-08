@@ -695,25 +695,19 @@ OnDemandLib.prototype.manualQuery = function(entityType, fields, soapAction, soa
 
 }
 
-OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
-    console.log('begin - entityQuery');
-    
+OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {    
     var that = this;
     var inSoap;
     var x;
     
-    console.log('before - entityTypeLowercase');
     var entityTypeLowercase = entityType.toLowerCase();
     var entityTypeCapitalized = entityTypeLowercase.substring(0, 1).toUpperCase() + entityTypeLowercase.substring(1);
-    console.log('after - entityTypeLowercase');
     
     var pageroot = document.location;
     pageroot = pageroot.toString();
     pageroot = pageroot.substr(0, pageroot.indexOf('/', 10));
     
     var pageSize = 5;
-    
-    console.log('before - typeof callback.startRowNum');
     
     if (typeof callback.startRowNum === 'undefined') {
          callback.startRowNum = 0;

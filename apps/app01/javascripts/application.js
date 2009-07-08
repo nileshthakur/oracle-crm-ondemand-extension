@@ -45,7 +45,7 @@ jQuery(function($) {
     console.log('end - app01');
     
     var testfn = function() {
-        console.log('begin - testfn');
+
         var userName = 'MERCKTEST_CTE01/pfeil';
         var password = 'method00';
         
@@ -81,9 +81,8 @@ jQuery(function($) {
              });
              */
              
-             console.log('before - odlib.entityQuery');
              odlib.entityQuery('Contact', {ContactFullName: '', ContactId: ''}, function(data) {
-                 alert('Retrieved ' + data.length + ' Contact records');
+                 alert( JSON.stringify(data) );
                  console.dir(data);
               });
                         
