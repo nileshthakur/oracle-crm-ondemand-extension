@@ -76,7 +76,7 @@ jQuery(function($) {
                    
                    var fields = {
                        ActivityId: '',
-                       PrimaryContactId: " ='" + contactPerId "' ",
+                       PrimaryContactId: " ='" + contactPerId + "' ",
                        PrimaryContactLastName: '',
                        PrimaryContactFirstName: '',
                        Owner: '',
