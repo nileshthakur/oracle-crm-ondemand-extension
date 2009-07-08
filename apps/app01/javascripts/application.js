@@ -56,8 +56,7 @@ jQuery(function($) {
                xhr.setRequestHeader('UserName', userName);
                xhr.setRequestHeader('Password', password);               
            },
-           complete: function(xhr, textStatus) {
-             console.log('login complete with textStatus = ' + textStatus);           
+           complete: function(xhr, textStatus) {           
              var userFields = {AccountName:''};
              var entities = [
                 {
@@ -82,7 +81,7 @@ jQuery(function($) {
              });
              */
              
-             
+             console.log('before - odlib.entityQuery');
              odlib.entityQuery('Contact', {ContactFullName: '', ContactId: ''}, function(data) {
                  console.dir(data);
               });
