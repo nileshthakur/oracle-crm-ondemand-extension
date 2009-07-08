@@ -120,13 +120,6 @@ jQuery(function($) {
                  console.dir(data);
             });
              
-            /* 
-             odlib.manualQuery('Activity', fields, soapAction, soapRequestTemplate, function(data) {
-                 alert( JSON.stringify(data) );
-                 console.dir(data);
-             });
-             */
-             
              
            },
            success: function(data, textStatus) {
