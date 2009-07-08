@@ -115,7 +115,7 @@ jQuery(function($) {
                  EndTime: ''
              };
              
-             odlib.activityQuery(fields, function() {
+             odlib.activityQuery(fields, function(data) {
                  alert( JSON.stringify(data) );
                  console.dir(data);
             });
