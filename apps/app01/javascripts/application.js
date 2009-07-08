@@ -82,6 +82,7 @@ PluginManager.prototype.applyPlugins = function() {
 
     $.each(this.pluginDefinitions, function(index, plugin) {   
 
+        console.log('checking plugin match: ' + plugin.name);
         if (pathname.match(plugin.invokeOnPattern)) {
             console.log('invoking plugin: ' + plugin.name);
             if (plugin.requiresLogin) {
