@@ -56,7 +56,8 @@ jQuery(function($) {
                xhr.setRequestHeader('UserName', userName);
                xhr.setRequestHeader('Password', password);               
            },
-           complete: function(xhr, textStatus) {             
+           complete: function(xhr, textStatus) {
+             console.log('login complete with textStatus = ' + textStatus);           
              var userFields = {AccountName:''};
              var entities = [
                 {
