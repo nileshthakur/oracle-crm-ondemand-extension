@@ -704,7 +704,7 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     
     console.log('before - entityTypeLowercase');
     var entityTypeLowercase = entityType.toLowerCase();
-    var entityTypeCapitalized = entityTypeLowercase[0].toUpperCase() + entityTypeLowercase.substring(1);
+    var entityTypeCapitalized = entityTypeLowercase.substring(0, 1).toUpperCase() + entityTypeLowercase.substring(1);
     console.log('after - entityTypeLowercase');
     
     var pageroot = document.location;
