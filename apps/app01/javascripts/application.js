@@ -54,7 +54,7 @@ jQuery(function($) {
                 },
                 {
                     name: 'Contact',
-                    fields: {ContactFullName: '', Id: ''}
+                    fields: {ContactFullName: '', ContactId: ''}
                 },
                 {
                     name: 'User',
@@ -70,7 +70,7 @@ jQuery(function($) {
              });
              */
              
-             odlib.entityQuery('Contact', {ContactFullName: '', Id: ''}, function(data) {
+             odlib.entityQuery('Contact', {ContactFullName: '', ContactId: ''}, function(data) {
                  console.dir(data);
               });             
              
