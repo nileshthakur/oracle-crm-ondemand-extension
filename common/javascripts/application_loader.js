@@ -27,7 +27,8 @@
         var scriptElement = document.createElement('script');
         scriptElement.type = 'text/javascript';
         scriptElement.src = scriptDefinition.url;
-        scriptElement.onload = function() {
+        
+        var scriptLoadCompletedFunction = function() {
             alert('onload called for ' + scriptDefinition.name);
             // execute callback function
             if (typeof scriptDefinition.callback === 'function') {
@@ -37,6 +38,15 @@
             // load the rest (tail of array) of the scripts
             loadScripts(scripts);
         };
+        
+        scriptElement.onload = scriptLoadCompletedFunction;
+        
+        // for ie
+        scriptElement.onreadystatechange = function () {
+            if (scriptElement.readyState == 'loaded' || scriptElement.readyState == 'complete') {
+                scriptLoadCompletedFunction();
+            }
+        }        
 
         // add script tag
         headElement.appendChild(scriptElement);    
