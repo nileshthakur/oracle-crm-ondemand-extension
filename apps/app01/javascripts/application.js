@@ -9,6 +9,11 @@ if (typeof jQuery === 'undefined') {
 }
 
 jQuery(function($) {
+    
+    function $get(key) {
+        return $("[id='" + key + "']")
+    }
+    
     console.log('begin - app01');
 
     // find out where we're at in OnDemand
@@ -19,7 +24,10 @@ jQuery(function($) {
     // ContactCallDetail
     
     if (pageName === 'ContactCallDetail') {
-
+        
+        var ownerId = $get('ContactCallEditForm.Owner Id').val(); // $("[id='ContactCallEditForm.Owner Id']").val();
+        var contactPerId = $get('ContactCallEditForm.Contact Per Id').val(); //$("[id='ContactCallEditForm.Contact Per Id']").val();
+        
         var valueLabel = $( $("td:contains('Objective')")[1] ).next();
         
         // TODO: implement objective exists logic
@@ -69,7 +77,7 @@ jQuery(function($) {
                 },
                 {
                     name: 'User',
-                    fields: {UserLoginId: ''}
+                    fields: {UserLoginId: '', UserId: ''}
                 }
              ];
              
@@ -84,25 +92,7 @@ jQuery(function($) {
              odlib.entityQuery('Contact', {ContactFullName: '', ContactId: ''}, function(data) {
                  console.dir(data);
               });
-                        
-             
-             var soapAction = 'document/urn:crmondemand/ws/activity/10/2004:Activity_QueryPage';
-             var soapRequestTemplate = '' +
-                 '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">' +
-                 '   <soapenv:Header/>' +
-                 '   <soapenv:Body>' +
-                 '      <ActivityNWS_Activity_QueryPage_Input xmlns="urn:crmondemand/ws/activity/10/2004">' +
-                 '         <PageSize>100</PageSize>' +
-                 '         <ListOfActivity>' +
-                 '            <Activity>' +
-                 '               <%=fields%>' +
-                 '            </Activity>' +
-                 '         </ListOfActivity>' +
-                 '         <StartRowNum>0</StartRowNum>' +
-                 '      </ActivityNWS_Activity_QueryPage_Input>' +
-                 '   </soapenv:Body>' +
-                 '</soapenv:Envelope>';
-             
+                                     
              var fields = {
                  ActivityId: '',
                  PrimaryContactId: " ='AAPA-2GC5M7' ",
@@ -125,11 +115,17 @@ jQuery(function($) {
                  EndTime: ''
              };
              
+             odlib.activityQuery(fields, function() {
+                 alert( JSON.stringify(data) );
+                 console.dir(data);
+            });
              
+            /* 
              odlib.manualQuery('Activity', fields, soapAction, soapRequestTemplate, function(data) {
                  alert( JSON.stringify(data) );
                  console.dir(data);
              });
+             */
              
              
            },

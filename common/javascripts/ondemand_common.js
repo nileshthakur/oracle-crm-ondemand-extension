@@ -661,7 +661,6 @@ OnDemandLib.prototype.manualQuery = function(entityType, fields, soapAction, soa
     
     var soapRequest = soapRequestTemplate.replace("<%=fields%>", fieldsXML);
       
-    
     jQuery.ajax({
         url: pageroot + '/Services/Integration',
         type: 'POST',
@@ -777,6 +776,29 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     } catch (e) {
         alert('Error: ' + e.message);
     }
+}
+
+OnDemandLib.prototype.activityQuery = function(fields, callback) {
+    var soapAction = 'document/urn:crmondemand/ws/activity/10/2004:Activity_QueryPage';
+    var soapRequestTemplate = '' +
+        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">' +
+        '   <soapenv:Header/>' +
+        '   <soapenv:Body>' +
+        '      <ActivityNWS_Activity_QueryPage_Input xmlns="urn:crmondemand/ws/activity/10/2004">' +
+        '         <PageSize>100</PageSize>' +
+        '         <ListOfActivity>' +
+        '            <Activity>' +
+        '               <%=fields%>' +
+        '            </Activity>' +
+        '         </ListOfActivity>' +
+        '         <StartRowNum>0</StartRowNum>' +
+        '      </ActivityNWS_Activity_QueryPage_Input>' +
+        '   </soapenv:Body>' +
+        '</soapenv:Envelope>';
+        
+    this.manualQuery('Activity', fields, soapAction, soapRequestTemplate, function(data) {
+        callback(data);
+    });
 }
 
 
