@@ -45,6 +45,7 @@ jQuery(function($) {
     console.log('end - app01');
     
     var testfn = function() {
+        console.log('begin - testfn');
         var userName = 'MERCKTEST_CTE01/pfeil';
         var password = 'method00';
         

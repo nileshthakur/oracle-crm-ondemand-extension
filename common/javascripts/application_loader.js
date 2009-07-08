@@ -29,7 +29,7 @@
         scriptElement.src = scriptDefinition.url;
         
         var scriptLoadCompletedFunction = function() {
-            alert('onload called for ' + scriptDefinition.name);
+
             // execute callback function
             if (typeof scriptDefinition.callback === 'function') {
                 scriptDefinition.callback.call(this, scriptDefinition);    
