@@ -83,6 +83,7 @@ jQuery(function($) {
              
              console.log('before - odlib.entityQuery');
              odlib.entityQuery('Contact', {ContactFullName: '', ContactId: ''}, function(data) {
+                 alert('Retrieved ' + data.length + ' Contact records');
                  console.dir(data);
               });
                         
