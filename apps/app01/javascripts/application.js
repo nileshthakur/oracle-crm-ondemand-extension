@@ -69,6 +69,11 @@ jQuery(function($) {
                    var contactPerId = $get('ContactCallInsert.Contact Per Id').val(); //$("[id='ContactCallEditForm.Contact Per Id']").val();
                    var $objectiveInputElement = $get('ContactCallInsert.VONDMED Call');
                    var objectiveValue = $objectiveInputElement.val();
+                   
+                   // already has a value so don't overwrite
+                   if (objectiveValue !== '') {
+                       return;
+                   }
 
                    var obj = {ownerId: ownerId, contactPerId: contactPerId, objectiveValue: objectiveValue};
 
