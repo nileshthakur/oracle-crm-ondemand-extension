@@ -81,11 +81,11 @@ jQuery(function($) {
              });
              */
              
-             /*
+             
              odlib.entityQuery('Contact', {ContactFullName: '', ContactId: ''}, function(data) {
                  console.dir(data);
               });
-              */           
+                        
              
              var soapAction = 'document/urn:crmondemand/ws/activity/10/2004:Activity_QueryPage';
              var soapRequestTemplate = '' +

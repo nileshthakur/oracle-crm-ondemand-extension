@@ -709,6 +709,8 @@ OnDemandLib.prototype.entityQuery = function(entityType, fields, callback) {
     
     var pageSize = 5;
     
+    console.log('begin - entityQuery');
+    
     if (typeof callback.startRowNum === 'undefined') {
          callback.startRowNum = 0;
     } else {
