@@ -64,10 +64,10 @@ jQuery(function($) {
            },
            complete: function(xhr, textStatus) {    
                
-               if (pageName === 'ContactCallEdit') {
-                   var ownerId = $get('ContactCallEditForm.Owner Id').val(); // $("[id='ContactCallEditForm.Owner Id']").val();
-                   var contactPerId = $get('ContactCallEditForm.Contact Per Id').val(); //$("[id='ContactCallEditForm.Contact Per Id']").val();
-                   var $objectiveInputElement = $get('ContactCallEditForm.VONDMED Call');
+               if (pageName === 'ContactCallInsert') {
+                   var ownerId = $get('ContactCallInsert.Owner Id').val(); // $("[id='ContactCallEditForm.Owner Id']").val();
+                   var contactPerId = $get('ContactCallInsert.Contact Per Id').val(); //$("[id='ContactCallEditForm.Contact Per Id']").val();
+                   var $objectiveInputElement = $get('ContactCallInsert.VONDMED Call');
                    var objectiveValue = $objectiveInputElement.val();
 
                    var obj = {ownerId: ownerId, contactPerId: contactPerId, objectiveValue: objectiveValue};
